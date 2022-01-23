@@ -14,8 +14,8 @@
                 <th scope="col">Class</th>
                 <th scope="col">Email</th>
                 <th scope="col">Details</th>
-                <th scope="col">Delete</th>
                 <th scope="col">Update</th>
+                <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -26,6 +26,19 @@
                   <td>{{ $student->roll }}</td>
                   <td>{{ $student->class }}</td>
                   <td>{{ $student->email }}</td>
+                  <td>
+                    <a href="{{ route('student.show',['student' => $student->id ]) }}" class="btn btn-sm-primary">Show Details</a>
+                  </td>
+                  <td>
+                    <a href="{{ route('student.edit',['student' => $student->id ]) }}" class="btn btn-sm-primary">Update</a>
+                  </td>
+                  <td>
+                    <form action="{{ route('student.destroy',['student' => $student->id]) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <input class="btn btn-primary" type="submit" value="Delete">
+                    </form>
+                  </td>
                 </tr>
                 @endforeach
             </tbody>

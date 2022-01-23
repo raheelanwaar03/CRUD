@@ -62,7 +62,10 @@ class StudentController extends Controller
      */
     public function show(student $student)
     {
-        //
+        $student = student::find($student->id);
+        return view('show',[
+            'student'=> $student,
+        ]);
     }
 
     /**
@@ -73,7 +76,8 @@ class StudentController extends Controller
      */
     public function edit(student $student)
     {
-        //
+        // return $student;
+        return view('edite',compact('student'));
     }
 
     /**
@@ -85,7 +89,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, student $student)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'roll' => 'required',
+            'class' => 'required',
+            'email' => 'required'
+         ]);
+
+         $task = student::find($student->id);
+         $task->name = $validated['name'];
+         $task->roll = $validated['roll'];
+         $task->class = $validated['class'];
+         $task->email = $validated['email'];
+         $task->save();
+         
+         return redirect()->route('student.index')->with('massage','Information Updated Succesfully');
     }
 
     /**
@@ -96,6 +114,7 @@ class StudentController extends Controller
      */
     public function destroy(student $student)
     {
-        //
+        $student->delete();
+        return redirect()->back();
     }
 }
