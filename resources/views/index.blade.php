@@ -13,9 +13,7 @@
                 <th scope="col">Roll No</th>
                 <th scope="col">Class</th>
                 <th scope="col">Email</th>
-                <th scope="col">Details</th>
-                <th scope="col">Update</th>
-                <th scope="col">Delete</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -26,13 +24,9 @@
                   <td>{{ $student->roll }}</td>
                   <td>{{ $student->class }}</td>
                   <td>{{ $student->email }}</td>
-                  <td>
-                    <a href="{{ route('student.show',['student' => $student->id ]) }}" class="btn btn-sm-primary">Show Details</a>
-                  </td>
-                  <td>
-                    <a href="{{ route('student.edit',['student' => $student->id ]) }}" class="btn btn-sm-primary">Update</a>
-                  </td>
-                  <td>
+                  <td class="d-flex justify-content-around">
+                    <a href="{{ route('student.show',['student' => $student->id ]) }}" class="btn btn-primary btn-sm">Show Details</a>
+                    <a href="{{ route('student.edit',['student' => $student->id ]) }}" class="btn btn-primary btn-sm">Update</a>
                     <form action="{{ route('student.destroy',['student' => $student->id]) }}" method="POST">
                       @csrf
                       @method('DELETE')
@@ -43,6 +37,6 @@
                 @endforeach
             </tbody>
           </table>
-          <a href="{{ route('student.create') }}" class="btn btn-outline-primary">Add New Student</a>
+          <a href="{{ route('student.create') }}" class="btn btn-outline-primary btn-sm">Add New Student</a>
     </div>
 @endsection
