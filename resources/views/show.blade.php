@@ -36,6 +36,7 @@
               </tr>
             </tbody>
           </table>
+          <hr>
           <a href="{{ route('student.index') }}" class="btn btn-outline-primary">Main Page</a>
           <a href="{{ route('student.create') }}" class="btn btn-outline-primary">Add New Student</a>
     </div>
