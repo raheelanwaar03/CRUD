@@ -26,6 +26,7 @@
                     {{ $message }}
                 @enderror</span>
                    <x-input name="Enter Your Email" id="email" />
+                   <hr>
                 <button type="submit" class="btn btn-outline-primary">Enter Data</button>
                </form>
             </div>
