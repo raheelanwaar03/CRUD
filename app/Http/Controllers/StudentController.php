@@ -76,7 +76,6 @@ class StudentController extends Controller
      */
     public function edit(student $student)
     {
-        // return $student;
         return view('edite',compact('student'));
     }
 

@@ -8,23 +8,25 @@
             <div class="card-body">
                 <div class="card-title text-center display-4"> Edite Information</div>
                 <hr>
-                               
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
                <form action="{{ route('student.update',['student' =>$student->id]) }}" method="POST">
                 @method('Patch')
                    @csrf
                    <x-input name="Enter Your Name"  id="name"/>
+                   <span style="color: red">@error('name')
+                    {{ $message }}
+                @enderror</span>
                    <x-input name="Enter Your Roll"  id="roll"/>
+                   <span style="color: red">@error('roll')
+                    {{ $message }}
+                @enderror</span>
                    <x-input name="Enter Your Class" id="class" />
+                   <span style="color: red">@error('class')
+                    {{ $message }}
+                @enderror</span>
                    <x-input name="Enter Your Email" id="email" />
+                   <span style="color: red">@error('email')
+                    {{ $message }}
+                @enderror</span>
                 <button type="submit" class="btn btn-outline-primary btn-block">Enter Data</button>
                </form>
             </div>
